@@ -28,6 +28,21 @@ class EntryPayload(BaseModel):
     remark: str | None = None
 
 
+class FlowImportPayload(BaseModel):
+    """批量补录疏通记录：每条记录独立校验、独立落库。"""
+
+    items: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class FlowImportResult(BaseModel):
+    """批量补录结果：逐条给出成败与原因，被阻断的设施编号单独列出。"""
+
+    ok: bool
+    message: str
+    results: list[dict[str, Any]] = Field(default_factory=list)
+    blocked: list[str] = Field(default_factory=list)
+
+
 
 class FacilityEntry(BaseModel):
     """设施明细结构。"""
