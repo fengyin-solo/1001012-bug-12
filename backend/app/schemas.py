@@ -28,6 +28,30 @@ class EntryPayload(BaseModel):
     remark: str | None = None
 
 
+class DrainBatchPayload(BaseModel):
+    """疏通登记/补录批量提交：每条是一个独立字段集合。"""
+
+    items: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class DrainBatchResult(BaseModel):
+    """批量疏通登记结果：被阻断时整批不落库，blocked 列出全部阻断编号与原因。"""
+
+    ok: bool
+    message: str
+    blocked: list[str] = Field(default_factory=list)
+    entries: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class DrainBackfillResult(BaseModel):
+    """补录结果：逐条独立成败；failed 原样带回 payload，前端可只重试这一条。"""
+
+    ok: bool
+    message: str
+    succeeded: list[dict[str, Any]] = Field(default_factory=list)
+    failed: list[dict[str, Any]] = Field(default_factory=list)
+
+
 
 class FacilityEntry(BaseModel):
     """设施明细结构。"""

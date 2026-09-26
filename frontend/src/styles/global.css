@@ -33,3 +33,54 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .link { border: none; background: none; color: var(--brand); cursor: pointer; padding: 0; }
 .page-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--muted); }
 .error-text { color: #b42318; }
+.success-text { color: #067647; }
+
+/* 进度徽标：列表、详情、弹窗共用同一组样式，避免三处各画一套 */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; white-space: nowrap; }
+.badge.pending { background: #f2f4f7; color: #475467; border: 1px solid #d0d5dd; }
+.badge.doing { background: #fffaeb; color: #b54708; border: 1px solid #fedf89; }
+.badge.reviewed { background: #ecfdf3; color: #067647; border: 1px solid #abefc6; }
+
+/* 弹窗 */
+.modal-mask { position: fixed; inset: 0; background: rgba(16, 24, 40, 0.45); display: flex; align-items: center; justify-content: center; z-index: 50; }
+.modal { background: #fff; border-radius: 10px; width: min(760px, 92vw); max-height: 88vh; display: flex; flex-direction: column; box-shadow: 0 12px 40px rgba(16, 24, 40, 0.2); }
+.modal.wide { width: min(960px, 94vw); }
+.modal-head { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+.modal-head h3 { margin: 0; font-size: 15px; }
+.modal-close { border: none; background: none; font-size: 18px; cursor: pointer; color: var(--muted); }
+.modal-body { padding: 16px 18px; overflow: auto; }
+.modal-foot { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 18px; border-top: 1px solid var(--border); }
+.modal-tip { font-size: 12px; color: var(--muted); margin: 0 0 10px; }
+
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px; }
+.form-field { display: flex; flex-direction: column; gap: 4px; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field label { font-size: 12px; color: var(--muted); }
+.form-field label .req { color: #b42318; margin-left: 2px; }
+.form-field input, .form-field select { border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 13px; }
+.form-field input[readonly] { background: #f2f4f7; color: #475467; }
+.field-error { font-size: 12px; color: #b42318; }
+
+.block-list { margin: 10px 0 0; padding: 10px 12px; background: #fef3f2; border: 1px solid #fda29b; border-radius: 6px; font-size: 12px; color: #b42318; }
+.block-list ul { margin: 6px 0 0; padding-left: 18px; }
+.block-list li { margin: 2px 0; }
+
+.editor-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.editor-table th, .editor-table td { border: 1px solid var(--border); padding: 6px 8px; }
+.editor-table input { width: 100%; border: none; padding: 2px 4px; font-size: 13px; background: transparent; }
+.editor-table input:focus { outline: 1px solid var(--brand); border-radius: 4px; }
+.editor-table .row-fail { background: #fef3f2; }
+.editor-table .row-ok { background: #ecfdf3; }
+.row-state { font-size: 12px; white-space: nowrap; }
+.row-state.fail { color: #b42318; }
+.row-state.ok { color: #067647; }
+
+.detail-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.detail-head h3 { margin: 0; font-size: 15px; }
+.detail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 14px; margin-bottom: 14px; }
+.detail-grid dt { font-size: 12px; color: var(--muted); }
+.detail-grid dd { margin: 2px 0 0; font-size: 13px; }
+.section-title { font-size: 13px; font-weight: 600; margin: 14px 0 6px; display: flex; justify-content: space-between; align-items: center; }
+.tag { display: inline-block; margin-left: 6px; padding: 0 6px; border-radius: 8px; font-size: 11px; background: #eef4ff; color: #1f6feb; border: 1px solid #b2ccff; }
+.btn.small { padding: 3px 8px; font-size: 12px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }

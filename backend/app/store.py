@@ -30,6 +30,9 @@ class Store:
     def overview(self) -> dict[str, object]:
         modules: list[dict[str, object]] = []
         for name in self.module_names():
+            if "." in name:
+                # 点号表名是主模块的子表（如 drain.records），不单独计入看板
+                continue
             rows = self.rows(name)
             modules.append({
                 "name": name,
